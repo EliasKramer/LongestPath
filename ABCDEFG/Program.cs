@@ -170,7 +170,7 @@ public class Vrp
         double sum = 0;
         int cnt = 0;
 
-        for (int points = 2; points < 100; points++)
+        for (int points = 2; /*points < 100*/; points++)
         {
         // false => neighbour is unvisited; true => the neighbour is visited
         bool[,] neighbourVisited = new bool[points, points];
@@ -229,7 +229,7 @@ public class Vrp
                 Console.WriteLine($"Time: {sw.ElapsedMilliseconds}ms");
                 Console.WriteLine($"Route Length: {route.Count}");
                 //Console.WriteLine(route.Select(x => x.ToString()).Aggregate((n1, n2) => $"{n1}->{n2}"));
-                Console.WriteLine($"That is {((((points - 1) * (points)) / 2) / ((double)route.Count - 1)) * 100:f2}% of the optimum");
+                Console.WriteLine($"That is {((((points - 1) * (points)) / 2) / ((double)route.Count - 1)) * 100:f2}% of the optimum\n");
             }
             sum += (((points - 1) * (points))  / 2 ) / ((double)route.Count - 1);
             cnt++;

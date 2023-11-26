@@ -46,7 +46,7 @@ public class controller_script : MonoBehaviour
         for (int i = 1; i < path.Count; i++)
         {
             ConnectTwoPoints(path[i - 1], path[i]);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(.5f);
         }
     }
     public void ConnectTwoPoints(int first_idx, int second_idx)

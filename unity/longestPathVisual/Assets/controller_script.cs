@@ -41,11 +41,13 @@ public class controller_script : MonoBehaviour
         Debug.Log($"optimal: {PathHelper.OptimalConnectionCount(n)} calculated: {result.ConnectionCount}");
 
         StartCoroutine(connectingPointsCoroutine());
-        n = 2;
+        //n = 2;
     }
 
     public IEnumerator connectingPointsCoroutine()
     {
+        
+        /*
         while (true)
         {
             var r = solver.CalculatePath(n);
@@ -56,18 +58,18 @@ public class controller_script : MonoBehaviour
             }
             else
             {
-                Debug.Log($"{n} not valid. calc: {r.ConnectionCount} optimal: {PathHelper.OptimalConnectionCount(n)}");
+               // Debug.Log($"{n} not valid. calc: {r.ConnectionCount} optimal: {PathHelper.OptimalConnectionCount(n)}");
             }
             n++;
 
             yield return new WaitForSeconds(.01f);
         }
-        /*
+        */
         for (int i = 1; i < path.Count; i++)
         {
             ConnectTwoPoints(path[i - 1], path[i]);
             yield return new WaitForSeconds(.5f);
-        }*/
+        }
     }
     public void ConnectTwoPoints(int first_idx, int second_idx)
     {

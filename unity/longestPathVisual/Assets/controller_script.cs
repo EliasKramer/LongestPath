@@ -16,10 +16,10 @@ public class controller_script : MonoBehaviour
 
     List<GameObject> gs = new List<GameObject>();
 
-    IPathSolver solver = new Solver_2();
+    IPathSolver solver = new Solver_3();
 
     List<int> path = new List<int>();
-    public int n = 40;
+    public int n;
     void Start()
     {
         //setup points in a circle around this object as the center
@@ -39,6 +39,14 @@ public class controller_script : MonoBehaviour
         PathHelper.PathErrorCheck(path,n);
 
         Debug.Log($"optimal: {PathHelper.OptimalConnectionCount(n)} calculated: {result.ConnectionCount}");
+
+        string res = "";
+        foreach (var item in path)
+        {
+            res += item + " ";
+        }
+
+        Debug.Log(res);
 
         StartCoroutine(connectingPointsCoroutine());
         //n = 2;
@@ -67,6 +75,7 @@ public class controller_script : MonoBehaviour
         */
         for (int i = 1; i < path.Count; i++)
         {
+            Debug.Log($"connect {path[i - 1]} with {path[i]}");
             ConnectTwoPoints(path[i - 1], path[i]);
             yield return new WaitForSeconds(.5f);
         }

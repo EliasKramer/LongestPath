@@ -1,24 +1,7 @@
 ﻿using Assets;
 
-Solver_2 solver = new Solver_2();
-
-for (int i = 2; i < 100000; i++)
-{
-    if (i % 100 == 0)
-    {
-        Console.WriteLine("progress: " + i);
-    }
-    if (IsPrime(i))
-    {
-        continue;
-    }
-    var path = solver.CalculatePath(i);
-    if (path.ConnectionCount == PathHelper.OptimalConnectionCount(i))
-    {
-        Console.WriteLine(i);
-    }
-}
-
+Solver_3 solver = new Solver_3();
+/*
 List<int> numbers = new List<int>() {
 2,
 3,
@@ -263,7 +246,29 @@ List<int> oldNumbers = new List<int>()
 937
 };
 
-bool IsPrime(int number)
+for (int i = 2; i < 100000; i++)
+{
+    if (i % 100 == 0)
+    {
+        Console.WriteLine("progress: " + i);
+    }
+    /*
+    if (IsPrime(i))
+    {
+        continue;
+    }
+    var path = solver.CalculatePath(i);
+    if (path.ConnectionCount == PathHelper.OptimalConnectionCount(i))
+    {
+        bool numbersContain = numbers.Contains(i);
+        bool oldNumbersContain = oldNumbers.Contains(i);
+        bool prime = IsPrime(i);
+
+        Console.WriteLine($"{i}|\t new numbers contain({numbersContain})\t|old numbers contain({oldNumbersContain})\t|prime({prime})");
+    }
+}
+
+//bool IsPrime(int number)
 {
     if (number <= 1) return false;
     if (number == 2) return true;
@@ -276,4 +281,18 @@ bool IsPrime(int number)
             return false;
 
     return true;
+}
+*/
+
+for (int i = 3; ; i += 2)
+{
+    var res = solver.CalculatePath(i).ConnectionCount;
+    if (res != PathHelper.OptimalConnectionCount(i))
+    {
+        Console.WriteLine(i);
+    }
+    if (i % 99 == 0)
+    {
+        Console.WriteLine("progress: " + i);
+    }
 }

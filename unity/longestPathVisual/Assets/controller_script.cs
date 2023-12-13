@@ -1,4 +1,5 @@
 using Assets;
+using LongestPathConsole;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,10 +17,11 @@ public class controller_script : MonoBehaviour
 
     List<GameObject> gs = new List<GameObject>();
 
-    IPathSolver solver = new Solver_3();
+    IPathSolver solver = new Solver_4();
 
     List<int> path = new List<int>();
     public int n;
+    public float interval;
     void Start()
     {
         //setup points in a circle around this object as the center
@@ -77,7 +79,7 @@ public class controller_script : MonoBehaviour
         {
             Debug.Log($"connect {path[i - 1]} with {path[i]}");
             ConnectTwoPoints(path[i - 1], path[i]);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(interval);
         }
     }
     public void ConnectTwoPoints(int first_idx, int second_idx)
@@ -93,9 +95,9 @@ public class controller_script : MonoBehaviour
         //pos between
         Vector2 pos_between = (first_pos + second_pos) / 2;
         GameObject newConnection = Instantiate(connection, pos_between, Quaternion.identity, this.gameObject.transform);
-
+        newConnection.name = $"{first_idx}->{second_idx}";
         //set scale 
-        newConnection.transform.localScale = new Vector3(dist_between, 0.01f, 1);
+        newConnection.transform.localScale = new Vector3(dist_between, 0.03f, 1);
 
         //set rotation
 

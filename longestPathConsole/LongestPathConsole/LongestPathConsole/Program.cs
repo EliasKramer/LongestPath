@@ -1,4 +1,6 @@
 ﻿using Assets;
+using LongestPathConsole;
+using System.Diagnostics;
 
 Solver_3 solver = new Solver_3();
 /*
@@ -283,6 +285,7 @@ for (int i = 2; i < 100000; i++)
     return true;
 }
 */
+Stopwatch stopwatch = Stopwatch.StartNew();
 
 for (int i = 3; ; i += 2)
 {
@@ -293,6 +296,24 @@ for (int i = 3; ; i += 2)
     }
     if (i % 99 == 0)
     {
-        Console.WriteLine("progress: " + i);
+        Console.WriteLine("progress: " + i + "\t" + stopwatch.ElapsedMilliseconds + "ms");
     }
 }
+/* solver 4
+progress: 99    8ms
+progress: 297   432ms
+progress: 495   3244ms
+progress: 693   12295ms*/
+
+/* solver 3
+ progress: 99    1ms
+progress: 297   17ms
+progress: 495   64ms
+progress: 693   161ms
+progress: 891   332ms
+progress: 1089  609ms
+progress: 1287  1046ms
+progress: 1485  1539ms
+progress: 1683  2246ms
+progress: 1881  3010ms
+ */

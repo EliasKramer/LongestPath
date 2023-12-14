@@ -253,8 +253,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   u_point: {fileID: 3363525245828203134, guid: df3bbeffdb1825c4bb599013425947b3, type: 3}
   connection: {fileID: 4794235594768221612, guid: 0fc18358c8a0faa4183098dd7ca589e1, type: 3}
-  n: 51
-  interval: 0.001
+  n: 9
+  interval: 0.1
 --- !u!1 &2061534120
 GameObject:
   m_ObjectHideFlags: 0
